@@ -1,0 +1,15 @@
+body {
+    background-color: gray;
+    height: 100vh;
+}
+canvas {
+    height: 100%;
+    width: calc(100vh * 9 / 16);
+    max-height: calc(100vh * 16 / 9);
+    max-width: calc(100vh * 9 / 16);
+    margin: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
