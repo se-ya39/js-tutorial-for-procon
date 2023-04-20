@@ -65,7 +65,7 @@ class GameLoopManager {
   }
 }
 
-class CanvasObject {
+class CanvasComponents {
   constructor({
     ctx = false,
     img = "assets/error.png",
@@ -74,7 +74,7 @@ class CanvasObject {
     motion = new Vector2(0, 0),
     rotate = 0,
     rotation = 0,
-    update = ()=>{},
+    update = () => {},
   } = {}) {
     this.ctx = ctx ? ctx : undefined;
     this.image = new Image();
@@ -101,5 +101,29 @@ class CanvasObject {
       this.size
     );
     this.ctx.rotate(-phi);
+  }
+}
+class CanvasManager {
+  constructor(size,elem) {
+    this.size = size;
+    this.elem = elem
+    this.elem.width = this.size.x;
+    this.elem.height = this.size.y;
+  }
+  refresh() {
+    this.elem.style.height =
+      this.size.x >= this.size.y
+        ? `calc(100vw * ${this.size.y / this.size.x})`
+        : "100%";
+    this.elem.style.width =
+      this.size.x < this.size.y
+        ? `calc(100vh * ${this.size.x / this.size.y})`
+        : "100%";
+  }
+  get x() {
+    return this.size.x;
+  }
+  get y() {
+    return this.size.y;
   }
 }
