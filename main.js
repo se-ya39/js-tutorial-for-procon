@@ -15,18 +15,18 @@ Components[0].update = function () {
   this.rotate += 10;
 };
 
-function update() {
+function main() {
   // your code goes here
 }
 
 //ゲームループの定義・開始
 const GameLoop = new GameLoopManager(() => {
-  update();
+  main();
   MainContext.clearRect(0, 0, GameArea.x, GameArea.y);
   for (let i = 0; i < Components.length; i++) {
-    let target = Components[i];
-    target.render();
-    target.update();
+    let targ = Components[i];
+    targ.render();
+    targ.update();
   }
 }, 30);
 GameLoop.start();
