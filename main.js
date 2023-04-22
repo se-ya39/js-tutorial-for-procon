@@ -1,8 +1,10 @@
+//ゲームエリアの管理
 const MainCanvas = document.getElementById("MainCanvas");
 const MainContext = MainCanvas.getContext("2d");
 const GameArea = new CanvasManager(new Vector2(1280, 720),MainCanvas);
 GameArea.refresh()
 
+//回り続ける小山高専
 let Components = [];
 Components[0] = new CanvasComponents({
   ctx: MainContext,
@@ -17,6 +19,7 @@ function main() {
   // your code goes here
 }
 
+//ゲームループの定義・開始
 const GameLoop = new GameLoopManager(() => {
   main();
   MainContext.clearRect(0, 0, GameArea.x, GameArea.y);
