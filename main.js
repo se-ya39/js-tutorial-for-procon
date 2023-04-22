@@ -1,14 +1,14 @@
 //ゲームエリアの管理
 const MainCanvas = document.getElementById("MainCanvas");
 const MainContext = MainCanvas.getContext("2d");
-const GameArea = new CanvasManager(new Vector2(1280, 720),MainCanvas);
-GameArea.refresh()
+const GameArea = new CanvasManager(new Vector2(1280, 720), MainCanvas);
+GameArea.refresh();
 
 //回り続ける小山高専
 let Components = [];
 Components[0] = new CanvasComponents({
   ctx: MainContext,
-  img: "assets/Oyama_logo.png",
+  img: "./assets/Oyama_logo.png",
   position: new Vector2(GameArea.x / 2, GameArea.y / 2),
 });
 Components[0].update = function () {

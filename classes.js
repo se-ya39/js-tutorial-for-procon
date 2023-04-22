@@ -106,22 +106,31 @@ class CanvasComponents {
     this.ctx.rotate(-phi);
   }
 }
+
 class CanvasManager {
   constructor(size, elem) {
     this.size = size;
     this.elem = elem;
     this.elem.width = this.size.x;
     this.elem.height = this.size.y;
+    window.addEventListener("resize", () => {this.refresh()});
   }
   refresh() {
-    this.elem.style.height =
-      this.size.x >= this.size.y
+    if (
+      this.ratio_mode !==
+      window.innerHeight / window.innerWidth < this.size.y / this.size.x
+    ) {
+      let flag =
+        window.innerHeight / window.innerWidth < this.size.y / this.size.x;
+      this.elem.style.height = !flag
         ? `calc(100vw * ${this.size.y / this.size.x})`
         : "100%";
-    this.elem.style.width =
-      this.size.x < this.size.y
+      this.elem.style.width = flag
         ? `calc(100vh * ${this.size.x / this.size.y})`
         : "100%";
+    }
+    this.ratio_mode =
+      window.innerHeight / window.innerWidth < this.size.y / this.size.x;
   }
   get x() {
     return this.size.x;
