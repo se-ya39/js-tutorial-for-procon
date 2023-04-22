@@ -52,7 +52,10 @@ class GameLoopManager {
         ")",
         this.total_time / this.total_count
       );
-    setTimeout(this.func, this.leastDelta);
+    setTimeout(() => {
+      this.func();
+      GameLoop.done();
+    }, this.leastDelta);
     this.leastTime = now;
 
     this.total_count++;
@@ -104,9 +107,9 @@ class CanvasComponents {
   }
 }
 class CanvasManager {
-  constructor(size,elem) {
+  constructor(size, elem) {
     this.size = size;
-    this.elem = elem
+    this.elem = elem;
     this.elem.width = this.size.x;
     this.elem.height = this.size.y;
   }

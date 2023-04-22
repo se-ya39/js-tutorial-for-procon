@@ -28,6 +28,5 @@ const GameLoop = new GameLoopManager(() => {
     targ.render();
     targ.update();
   }
-  GameLoop.done();
 }, 30);
 GameLoop.start();
