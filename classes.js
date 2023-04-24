@@ -9,6 +9,24 @@ class Vector2 {
     normalized.y = Math.sin(Math.atan(this._y / this._x));
     return normalized;
   }
+  calc(char, vec2) {
+    switch (char) {
+      case "+":
+        return new Vector2(this._x + vec2.x, this._y + vec2.y);
+      case "-":
+        return new Vector2(this._x - vec2.x, this._y - vec2.y);
+      case "*":
+        return new Vector2(this._x * vec2.x, this._y * vec2.y);
+      case "/":
+        return new Vector2(this._x / vec2.x, this._y / vec2.y);
+      case "%":
+        return new Vector2(this._x % vec2.x, this._y % vec2.y);
+      case "^":
+        return new Vector2(this._x ^ vec2.x, this._y ^ vec2.y);
+      default:
+        throw new Error("Invalid operator");
+    }
+  }
   set x(value) {
     this._x = value;
   }
@@ -113,7 +131,9 @@ class CanvasManager {
     this.elem = elem;
     this.elem.width = this.size.x;
     this.elem.height = this.size.y;
-    window.addEventListener("resize", () => {this.refresh()});
+    window.addEventListener("resize", () => {
+      this.refresh();
+    });
   }
   refresh() {
     if (
